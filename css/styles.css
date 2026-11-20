@@ -1,0 +1,142 @@
+/* Чек-лист занятия «ИИ в работе тренера».
+   Палитра People in Focus: синий #0874E8, мята #49F59A, тёмный #020D1D.
+   Красного, оранжевого, жёлтого, розового и фиолетового в бренде нет. */
+
+:root{
+  --blue:#0874E8;
+  --blue-deep:#123EDB;
+  --mint:#49F59A;
+  --mint-deep:#0FBF77;
+  --ink:#0C1B2A;
+  --ink-soft:#4A5C6E;
+  --line:#E2E9F2;
+  --bg:#F6F9FD;
+  --card:#FFFFFF;
+  --radius:14px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Inter,'Segoe UI',system-ui,sans-serif;
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+
+/* ---------- шапка ---------- */
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top__in{max-width:1180px;margin:0 auto;padding:14px 20px 12px}
+.top__name{font-size:20px;font-weight:800;letter-spacing:-.01em}
+.br{color:var(--mint-deep);font-weight:700}
+.top__meta{color:var(--ink-soft);font-size:13px;margin-top:2px}
+.bar{height:6px;background:var(--line);border-radius:99px;margin:12px 0 10px;overflow:hidden}
+.bar__fill{height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,var(--blue),var(--mint));transition:width .35s ease}
+.top__row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.rank{display:flex;align-items:center;gap:9px;min-width:0}
+.rank__icon{font-size:19px;line-height:1}
+.rank__txt{display:flex;flex-direction:column;min-width:0}
+.rank__txt b{font-size:14px;font-weight:700}
+.rank__txt i{font-style:normal;font-size:12px;color:var(--ink-soft);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.count{font-size:14px;color:var(--ink-soft);white-space:nowrap}
+.count b{color:var(--blue);font-size:17px;font-weight:800}
+
+/* ---------- каркас ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:22px 20px 60px;
+  display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:start}
+.lead{margin:0 0 18px;color:var(--ink-soft);font-size:15px}
+
+/* ---------- оглавление ---------- */
+.toc{position:sticky;top:132px;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:14px 12px}
+.toc__head{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--ink-soft);margin:0 6px 8px}
+.toc__link{display:flex;align-items:baseline;gap:8px;padding:7px 8px;border-radius:9px;
+  text-decoration:none;color:var(--ink);font-size:14px;transition:background .15s}
+.toc__link:hover{background:var(--bg)}
+.toc__link.active{background:rgba(8,116,232,.09);color:var(--blue);font-weight:600}
+.toc__num{font-variant-numeric:tabular-nums;color:var(--ink-soft);font-size:12px;min-width:12px}
+.toc__name{flex:1}
+.toc__count{font-size:11px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+
+/* ---------- блок ---------- */
+.block{background:var(--card);border:1px solid var(--line);border-radius:18px;
+  margin-bottom:18px;overflow:hidden}
+.block__header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;
+  padding:16px 20px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#FBFDFF,#F4F8FD)}
+.block__num{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+  background:var(--blue);color:#fff;font-weight:800;font-size:15px}
+.block__title{font-size:18px;font-weight:700;letter-spacing:-.01em}
+.block__time{font-size:13px;color:var(--ink-soft);margin-top:2px}
+.block__badge{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12px;
+  border:1px solid var(--blue);color:var(--blue);background:rgba(8,116,232,.06)}
+.badge--do{border-color:var(--mint-deep);color:var(--mint-deep);background:rgba(73,245,154,.12)}
+.block__count{font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+.block__body{padding:16px 20px 20px}
+.block__text{margin:0 0 14px;color:var(--ink-soft);font-size:15px}
+
+/* ---------- шаг ---------- */
+.step{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:12px;margin-bottom:8px;
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
+  cursor:pointer;transition:border-color .15s,background .15s}
+.step:hover{border-color:#C9D9EC;background:#FCFDFF}
+.step__check{width:22px;height:22px;margin-top:2px;border:2px solid #C3D2E4;border-radius:7px;
+  display:grid;place-items:center;flex:none;transition:all .15s}
+.step__check.done{background:var(--mint);border-color:var(--mint-deep)}
+.step__check.done::after{content:'';width:11px;height:6px;margin-top:-3px;
+  border-left:2.5px solid #06371F;border-bottom:2.5px solid #06371F;transform:rotate(-45deg)}
+.step__title{font-weight:600;font-size:15.5px}
+.step__text{color:var(--ink-soft);font-size:14.5px;margin-top:3px}
+.step.completed{background:#F4FBF7;border-color:#BFEBD3}
+.step.completed .step__title{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:#9FD9BC}
+
+/* ---------- промпт ---------- */
+.cmd{margin-top:10px;border:1px solid #D7E3F2;border-radius:12px;overflow:hidden;
+  background:#F9FBFE;cursor:auto}
+.cmd__head{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:7px 10px 7px 12px;background:#EFF5FC;border-bottom:1px solid #D7E3F2}
+.cmd__label{font-size:12px;font-weight:700;color:var(--blue-deep);
+  text-transform:uppercase;letter-spacing:.04em}
+.cmd__copy{border:1px solid var(--blue);background:#fff;color:var(--blue);
+  font:600 12px/1 Inter,sans-serif;padding:6px 12px;border-radius:8px;cursor:pointer;
+  transition:all .15s}
+.cmd__copy:hover{background:var(--blue);color:#fff}
+.cmd__copy.ok{background:var(--mint);border-color:var(--mint-deep);color:#06371F}
+.cmd__code{margin:0;padding:12px;font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:13px;line-height:1.6;white-space:pre-wrap;word-break:break-word;color:#16293B}
+
+/* ---------- врезки ---------- */
+.warn{margin:14px 0 4px;padding:12px 14px;border-radius:12px;font-size:14.5px;
+  background:rgba(8,116,232,.06);border:1px solid rgba(8,116,232,.28)}
+.say{margin-top:10px;padding:10px 12px;border-left:3px solid var(--mint-deep);
+  background:rgba(73,245,154,.1);border-radius:0 10px 10px 0;font-size:14.5px;color:#14523A}
+.ref{margin-top:14px;border:1px dashed #C9D9EC;border-radius:12px;overflow:hidden;background:#FCFDFF}
+.ref__head{padding:10px 14px;font-weight:600;font-size:14.5px;border-bottom:1px dashed #C9D9EC}
+.ref__label{display:inline-block;margin-right:8px;padding:1px 8px;border-radius:99px;
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+  background:var(--ink);color:#fff}
+.ref__body{padding:12px 14px;font-size:14.5px}
+.ref__group{margin-bottom:6px}
+.ref__hint{margin-top:8px;color:var(--ink-soft);font-size:13.5px}
+
+/* ---------- финал ---------- */
+.done{padding:18px 20px;border-radius:18px;color:#fff;
+  background:linear-gradient(120deg,var(--blue-deep),var(--blue) 60%,#0AA3C9)}
+.done__title{font-weight:700;font-size:17px}
+.done__text{margin-top:4px;font-size:14.5px;opacity:.92}
+.reset{margin-top:18px;text-align:center}
+.reset button{border:1px solid var(--line);background:var(--card);color:var(--ink-soft);
+  font:500 13px Inter,sans-serif;padding:8px 16px;border-radius:9px;cursor:pointer}
+.reset button:hover{border-color:#C9D9EC;color:var(--ink)}
+
+/* ---------- телефон ---------- */
+@media (max-width:860px){
+  .wrap{grid-template-columns:1fr;gap:16px;padding:16px 16px 48px}
+  .toc{position:static;order:-1}
+  .block__header{grid-template-columns:auto 1fr;padding:14px 16px}
+  .block__count{grid-column:2;justify-self:start;margin-top:2px}
+  .block__body{padding:14px 16px 16px}
+  .top__name{font-size:18px}
+}
